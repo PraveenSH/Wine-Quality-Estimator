@@ -11,6 +11,6 @@ for line in _Log:
 	diff = float(row[2].split('\n')[0]);
 	error.append(diff);
 
-plt.plot(error,'ro');
+plt.plot(error,'rx');
 plt.ylabel('Error')
 plt.show()

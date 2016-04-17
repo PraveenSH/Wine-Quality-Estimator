@@ -5,8 +5,8 @@ from sklearn import linear_model
 import numpy as np
 
 
-train_df = pd.read_csv('../input/train-white.csv', header=0)
-test_df = pd.read_csv('../input/test-white.csv', header=0)
+train_df = pd.read_csv('../input/train-red.csv', header=0)
+test_df = pd.read_csv('../input/test-red.csv', header=0)
 
 
 train_y = train_df['quality']
@@ -20,9 +20,9 @@ test_df.drop(['quality'],axis=1, inplace=True)
 test_X = test_df.as_matrix()
 
 
-#gbm = xgb.XGBClassifier(max_depth=3, n_estimators=300, learning_rate=0.05).fit(train_X, train_y)
-gbm = linear_model.LinearRegression()
-gbm.fit(train_X,train_y)
+gbm = xgb.XGBRegressor(max_depth=3, n_estimators=300, learning_rate=0.05).fit(train_X, train_y)
+#gbm = linear_model.LinearRegression()
+#gbm.fit(train_X,train_y)
 predictions = gbm.predict(test_X)
 
 _error = open("error.log",'w')
